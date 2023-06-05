@@ -124,9 +124,15 @@ our $nMutants = 0;
 
 sub mutateAndSave {
     my $mtype = shift @_;
+    my $mIndex;
+    if ($nMutants < 10) {
+        $mIndex = "0$nMutants";
+    } else {
+        $mIndex = "$nMutants";
+    }
     if ($mtype eq "RG") {
         my $newInitialState = shift @_;
-        my $path = "${mutantPath}/mutant_${nMutants}_RG_${newInitialState}_$fsmFilePath";
+        my $path = "${mutantPath}/mutant_${mIndex}_RG_${newInitialState}_$fsmFilePath";
         open($fsmFile, ">", $path);
         print $fsmFile "digraph \"$path\" {\n";
         print $fsmFile "    Reset [style=invis,shape=point,label=\"\",width=0,height=0];\n";
@@ -158,7 +164,7 @@ sub mutateAndSave {
         print $fsmFile "}\n";
     } elsif ($mtype eq "SF") {
         my $stuckAtState = shift @_;
-        my $path = "${mutantPath}/mutant_${nMutants}_SF_${stuckAtState}_$fsmFilePath";
+        my $path = "${mutantPath}/mutant_${mIndex}_SF_${stuckAtState}_$fsmFilePath";
         open($fsmFile, ">", $path);
         print $fsmFile "digraph \"$path\" {\n";
         print $fsmFile "    Reset [style=invis,shape=point,label=\"\",width=0,height=0];\n";
@@ -194,7 +200,7 @@ sub mutateAndSave {
         print $fsmFile "}\n";
     } elsif ($mtype eq "TG") {
         my ($glitchSource, $glitchedAction, $glitchResult) = @_;
-        my $path = "${mutantPath}/mutant_${nMutants}_TG_${glitchSource}_$fsmFilePath";
+        my $path = "${mutantPath}/mutant_${mIndex}_TG_${glitchSource}_$fsmFilePath";
         open($fsmFile, ">", $path);
         print $fsmFile "digraph \"$path\" {\n";
         print $fsmFile "    Reset [style=invis,shape=point,label=\"\",width=0,height=0];\n";
@@ -257,7 +263,7 @@ sub mutateAndSave {
     } elsif ($mtype eq "WO") {
         my ($wState, $gAction) = @_;
         my $extraState = $wState."_p";
-        my $path = "${mutantPath}/mutant_${nMutants}_WO_${wState}_$fsmFilePath";
+        my $path = "${mutantPath}/mutant_${mIndex}_WO_${wState}_$fsmFilePath";
         open($fsmFile, ">", $path);
         print $fsmFile "digraph \"$path\" {\n";
         print $fsmFile "    Reset [style=invis,shape=point,label=\"\",width=0,height=0];\n";

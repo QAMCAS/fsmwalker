@@ -1,4 +1,4 @@
-digraph "mutants/mutant_5_SF_Closed_carwindow.dot" {
+digraph "mutants/mutant_06_SF_Closing_carwindow.dot" {
     Reset [style=invis,shape=point,label="",width=0,height=0];
     Closed [label="Window\lClosed\l"];
     Closing [label="Window\lClosing\l"];
@@ -6,10 +6,9 @@ digraph "mutants/mutant_5_SF_Closed_carwindow.dot" {
     Opened [label="Window\lOpened\l"];
     Opening [label="Window\lOpening\l"];
     Reset -> Closed;
-    Closed -> Closed [label=""];
-    Closing -> Opening [label="Button\lPressed\l"];
-    Closing -> Closed [label="Button\lPulled\l"];
-    Closing -> Halfopen [label="Button\lReleased\l"];
+    Closed -> Closed [label="else"];
+    Closed -> Opening [label="Button\lPressed\l"];
+    Closing -> Closing [label=""];
     Halfopen -> Opening [label="Button\lPressed\l"];
     Halfopen -> Closing [label="Button\lPulled\l"];
     Halfopen -> Halfopen [label="Button\lReleased\l"];
