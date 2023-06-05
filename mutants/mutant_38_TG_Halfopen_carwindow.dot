@@ -1,0 +1,22 @@
+digraph "mutants/mutant_38_TG_Halfopen_carwindow.dot" {
+    Reset [style=invis,shape=point,label="",width=0,height=0];
+    Closed [label="Window\lClosed\l"];
+    Closing [label="Window\lClosing\l"];
+    Halfopen [label="Window\lHalfopen\l"];
+    Opened [label="Window\lOpened\l"];
+    Opening [label="Window\lOpening\l"];
+    Reset -> Closed;
+    Closed -> Closed [label="else"];
+    Closed -> Opening [label="Button\lPressed\l"];
+    Closing -> Opening [label="Button\lPressed\l"];
+    Closing -> Closed [label="Button\lPulled\l"];
+    Closing -> Halfopen [label="Button\lReleased\l"];
+    Halfopen -> Opening [label="Button\lPressed\l"];
+    Halfopen -> Closed [label="Button\lPulled\l"];
+    Halfopen -> Halfopen [label="Button\lReleased\l"];
+    Opened -> Opened [label="else"];
+    Opened -> Closing [label="Button\lPulled\l"];
+    Opening -> Opened [label="Button\lPressed\l"];
+    Opening -> Closing [label="Button\lPulled\l"];
+    Opening -> Halfopen [label="Button\lReleased\l"];
+}
