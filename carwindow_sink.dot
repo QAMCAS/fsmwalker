@@ -1,0 +1,30 @@
+digraph carwindow {
+    rankdir=LR;
+    Reset [shape=point,style=invis,width=0,height=0,label=""];
+    Halfopen [label="Window\lHalfopen\l"];
+    Opening [label="Window\lOpening\l"];
+    Closing [label="Window\lClosing\l"];
+    Opened [label="Window\lOpened\l"];
+    Closed [label="Window\lClosed\l"];
+    Reset -> Closed;
+    Closed -> Opening  [label="Button\lPressed\l"];
+    Closed -> Closed   [label="else"];
+    Opened -> Closing  [label="Button\lPulled\l"];
+    Opened -> Opened   [label="else"];
+    Opening -> Halfopen [label="Button\lReleased\l"];
+    Opening -> Opened  [label="Button\lPressed\l"];
+    Opening -> Closing [label="Button\lPulled\l"];
+    Closing -> Halfopen [label="Button\lReleased\l"];
+    Closing -> Closed  [label="Button\lPulled\l"];
+    Closing -> Opening [label="Button\lPressed\l"];
+    Halfopen -> Opening [label="Button\lPressed\l"];
+    Halfopen -> Closing [label="Button\lPulled\l"];
+    Halfopen -> Halfopen [label="Button\lReleased\l"];
+
+    Halfopen -> EOT;
+    Opening -> EOT;
+    Closing -> EOT;
+    Opened -> EOT;
+    Closed -> EOT;
+    EOT -> EOT;
+}
