@@ -1,2 +1,3 @@
 # fsmwalker
-A toolset mainly for finding LTL structures with the highest fault detection capability
+Walks on given FSMs and creates linear traces. This tool might be useful to generate date for LTL mining.
+
