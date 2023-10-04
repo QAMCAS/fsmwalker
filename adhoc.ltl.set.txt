@@ -1,7 +1,10 @@
 <>x
+<>(x && y)
+<>(x && y && XWindow_Opened)
 [](x -> y)
 [](x -> X!x)
+[](x -> []x)
+[]((!x && Xx) -> Xy)
 []((x && X!x) -> Xy)
 [](x -> X(x W y))
 []((x && <>!x) -> (y U !x))
-[](x -> X[]x)
